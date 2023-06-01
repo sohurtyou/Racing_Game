@@ -29,12 +29,14 @@ def events(car,trafics,screen):
             new_trafic = Trafic(screen)
             trafics.add(new_trafic)
 
-def update(car,background,trafics):
+def update(car,background,trafics,stats):
     background.update()
     background.output()
     car.update()
     car.output()
     update_trafic_cars(trafics,car)
+    stats.output()
+    stats.update()
     pygame.display.flip()
 
 
