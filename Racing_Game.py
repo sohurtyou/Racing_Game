@@ -1,5 +1,7 @@
 import pygame
 import sys
+
+import controls
 from car import Car
 
 def run():
@@ -11,10 +13,8 @@ def run():
     black = (0,0,0)
     while True:
         screen.fill(black)
-        car.output()
+        controls.update(car)
         pygame.display.flip()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        controls.events()
         pygame.display.flip()
 run()
