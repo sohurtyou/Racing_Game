@@ -15,6 +15,6 @@ def run():
         screen.fill(black)
         controls.update(car)
         pygame.display.flip()
-        controls.events()
+        controls.events(car)
         pygame.display.flip()
 run()
