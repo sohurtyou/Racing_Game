@@ -17,7 +17,7 @@ class Car:
     def output(self):
         self.screen.blit(self.image, self.rect)
 
-    def update_car(self):
+    def update(self):
         if self.mright and self.rect.right < 530:
             self.rect.centerx += 2
             self.image = pygame.image.load('Images/Game_Screen/Car/user_green_car_right.png')

@@ -24,6 +24,9 @@ def events(car):
                 car.mup = False
             elif event.key == pygame.K_s:
                 car.mdown = False
-def update(car):
-    car.update_car()
+def update(car,background):
+    background.update()
+    background.output()
+    car.update()
     car.output()
+    pygame.display.flip()
