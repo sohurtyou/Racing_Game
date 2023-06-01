@@ -1,6 +1,6 @@
 import pygame,sys
-
-def events(car):
+from trafic import Trafic
+def events(car,trafics,screen):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -24,9 +24,22 @@ def events(car):
                 car.mup = False
             elif event.key == pygame.K_s:
                 car.mdown = False
-def update(car,background):
+        elif event.type == pygame.USEREVENT:
+            new_trafic = Trafic(screen)
+            trafics.add(new_trafic)
+def update(car,background,trafics):
     background.update()
     background.output()
     car.update()
     car.output()
+    update_trafic_cars(trafics)
     pygame.display.flip()
+
+
+def update_trafic_cars(trafics):
+    trafics.update()
+    for trafic in trafics.copy():
+        if trafic.rect.top > 600 :
+            trafics.remove(trafic)
+    for trafic in trafics.sprites():
+        trafic.draw()
