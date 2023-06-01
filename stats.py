@@ -23,6 +23,8 @@ class Stats:
         self.rect.centerx = 100
         self.rect.centery = 50
 
+    def reset_stats (self):
+        self.i = 0.0
     def update(self):
         self.i += 0.2
         self.text = self.font.render(f'Score : {int(self.i)}', True, self.black)

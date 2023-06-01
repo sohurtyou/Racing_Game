@@ -37,6 +37,11 @@ def update(car,background,trafics,stats):
     update_trafic_cars(trafics,car)
     stats.output()
     stats.update()
+    if car.car_explosive == True:
+        stats.reset_stats()
+        car_dead(trafics, car)
+        time.sleep(1.5)
+        car.car_explosive = False
     pygame.display.flip()
 
 
@@ -46,6 +51,11 @@ def update_trafic_cars(trafics,car):
         if trafic.rect.top > 600 :
             trafics.remove(trafic)
         elif pygame.sprite.collide_rect(car, trafic):
-            time.sleep(1.5)
+            car.car_explosive = True
     for trafic in trafics.sprites():
         trafic.draw()
+
+def car_dead(trafics,car):
+    trafics.empty()
+    car.rect.centerx = car.screen_rect.centerx
+    car.rect.centery = 500

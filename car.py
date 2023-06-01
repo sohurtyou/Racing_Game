@@ -13,6 +13,7 @@ class Car:
         self.mleft = False
         self.mup = False
         self.mdown = False
+        self.car_explosive = False
 
     def output(self):
         self.screen.blit(self.image, self.rect)
