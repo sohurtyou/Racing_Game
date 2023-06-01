@@ -1,5 +1,6 @@
 import pygame,sys
 from trafic import Trafic
+import time
 def events(car,trafics,screen):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -27,19 +28,22 @@ def events(car,trafics,screen):
         elif event.type == pygame.USEREVENT:
             new_trafic = Trafic(screen)
             trafics.add(new_trafic)
+
 def update(car,background,trafics):
     background.update()
     background.output()
     car.update()
     car.output()
-    update_trafic_cars(trafics)
+    update_trafic_cars(trafics,car)
     pygame.display.flip()
 
 
-def update_trafic_cars(trafics):
+def update_trafic_cars(trafics,car):
     trafics.update()
     for trafic in trafics.copy():
         if trafic.rect.top > 600 :
             trafics.remove(trafic)
+        elif pygame.sprite.collide_rect(car, trafic):
+            time.sleep(1.5)
     for trafic in trafics.sprites():
         trafic.draw()
