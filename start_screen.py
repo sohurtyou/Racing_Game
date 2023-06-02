@@ -1,5 +1,6 @@
 import pygame
 
+
 class Start_screen:
     def __init__(self, screen):
         self.screen = screen

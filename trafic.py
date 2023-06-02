@@ -3,7 +3,7 @@ import pygame
 
 
 class Trafic(pygame.sprite.Sprite):
-    def __init__(self,screen):
+    def __init__(self, screen):
         super(Trafic, self).__init__()
         self.screen = screen
         self.image = pygame.image.load('Images/Game_Screen/Trafic/trafic_red_car.png')

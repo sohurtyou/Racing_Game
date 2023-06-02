@@ -1,4 +1,5 @@
-import pygame,sys
+import pygame
+import sys
 from trafic import Trafic
 import time
 
@@ -43,7 +44,7 @@ def events(car, trafics, screen, start, stats, end):
 def update(car, background, trafics, stats, start, end, sound):
     background.update()
     background.output()
-    update_trafic_cars(trafics,car,sound)
+    update_trafic_cars(trafics, car, sound)
     car.output()
     car.update()
     stats.output()
