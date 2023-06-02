@@ -18,9 +18,7 @@ class Start_screen:
         self.rect_start.centerx = self.screen_rect.centerx
         self.rect_start.centery = 400
         self.font = pygame.font.Font('freesansbold.ttf', 32)
-        self.white = (255, 255, 255)
         self.red = (210, 4, 45)
-        self.gray = (127, 127, 127)
         self.black = (0, 0, 0)
         self.text1 = self.font.render(' Press START', True, self.black)
         self.text2 = self.font.render(' to', True, self.black)
@@ -35,8 +33,6 @@ class Start_screen:
         self.rect_text3.centerx = self.screen_rect.centerx
         self.rect_text3.centery = 294
         self.Game_Start = False
-
-
 
     def output(self):
         self.screen.blit(self.imagebg, self.rect)

@@ -13,9 +13,7 @@ class End_screen:
         self.rect_end.centerx = self.screen_rect.centerx
         self.rect_end.centery = 500
         self.font = pygame.font.Font('freesansbold.ttf', 32)
-        self.white = (255, 255, 255)
-        self.black = (0,0,0)
-        self.blue = (0,191,255)
+        self.black = (0, 0, 0)
         self.text1 = self.font.render(' Press RESTART to Restart Game:)', True, self.black)
         self.rect_text1 = self.text1.get_rect()
         self.rect_text1.centerx = self.screen_rect.centerx
@@ -30,5 +28,5 @@ class End_screen:
     def output(self):
         self.screen.blit(self.imagebg, self.bg_rect)
         self.screen.blit(self.text1, self.rect_text1)
-        self.screen.blit(self.image_reset_back_ground,self.rect_reset_back_ground)
+        self.screen.blit(self.image_reset_back_ground, self.rect_reset_back_ground)
         self.screen.blit(self.imagend, self.rect_end)

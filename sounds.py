@@ -1,5 +1,6 @@
 import pygame
 
+
 class Sounds:
     def __init__(self):
         self.back_ground_start_screen = pygame.mixer.Sound('Sounds/Start_screen_music.mp3')

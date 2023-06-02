@@ -1,13 +1,13 @@
 import random
 import pygame
 
-class Trafic(pygame.sprite.Sprite):
 
+class Trafic(pygame.sprite.Sprite):
     def __init__(self,screen):
-        super(Trafic,self).__init__()
+        super(Trafic, self).__init__()
         self.screen = screen
         self.image = pygame.image.load('Images/Game_Screen/Trafic/trafic_red_car.png')
-        self.image_reverse = pygame.image.load(('Images/Game_Screen/Trafic/trafic_red_car_reverse.png'))
+        self.image_reverse = pygame.image.load('Images/Game_Screen/Trafic/trafic_red_car_reverse.png')
         self.rect = self.image.get_rect()
         random_speed_front = [1.0, 1.2, 1.4, 1.5]
         self.speed_front = random.choice(random_speed_front)
