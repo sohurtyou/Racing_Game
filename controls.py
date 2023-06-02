@@ -38,16 +38,17 @@ def events(car,trafics,screen,start,stats,end):
                 stats.reset_stats()
                 start.Game_Start = True
 
-def update(car,background,trafics,stats,start,end):
+def update(car,background,trafics,stats,start,end,sound):
     background.update()
     background.output()
-    update_trafic_cars(trafics,car)
+    update_trafic_cars(trafics,car,sound)
     car.output()
     car.update()
     stats.output()
     stats.update()
     pygame.display.flip()
     if car.car_explosive :
+        sound.car_crash.play()
         car_dead(trafics, car,start,end)
         time.sleep(1.5)
         car.car_explosive = False
@@ -55,13 +56,15 @@ def update(car,background,trafics,stats,start,end):
 
 
 
-def update_trafic_cars(trafics,car):
+def update_trafic_cars(trafics,car,sound):
     trafics.update()
     for trafic in trafics.copy():
         if trafic.rect.top > 600 :
             trafics.remove(trafic)
         elif pygame.sprite.collide_rect(car, trafic):
             car.image = pygame.image.load('Images/Game_Screen/Car/explosive.png')
+            sound.back_ground_game_screen.stop()
+            sound.motor_sound.stop()
             if trafic.rect.centerx < 300:
                 trafic.image_reverse = pygame.image.load('Images/Game_Screen/Car/explosive.png')
                 car.car_explosive = True
