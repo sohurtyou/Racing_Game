@@ -23,6 +23,14 @@ class Stats:
         self.rect.centerx = 100
         self.rect.centery = 50
 
+
+    def output_restart(self):
+        self.screen.blit(self.imagestart, self.rect_bg)
+        self.rect_bg.centerx = 290
+        self.rect_bg.centery = 150
+        self.screen.blit(self.text, self.rect)
+        self.rect.centerx = 270
+        self.rect.centery = 150
     def reset_stats (self):
         self.i = 0.0
     def update(self):

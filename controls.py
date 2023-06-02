@@ -1,7 +1,7 @@
 import pygame,sys
 from trafic import Trafic
 import time
-def events(car,trafics,screen,start,stats):
+def events(car,trafics,screen,start,stats,end):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -33,8 +33,12 @@ def events(car,trafics,screen,start,stats):
             if start.rect_start.collidepoint(mouse):
                 start.Game_Start = True
                 stats.reset_stats()
+            elif end.rect_end.collidepoint(mouse):
 
-def update(car,background,trafics,stats,start):
+                stats.reset_stats()
+                start.Game_Start = True
+
+def update(car,background,trafics,stats,start,end):
     background.update()
     background.output()
     update_trafic_cars(trafics,car)
@@ -44,7 +48,7 @@ def update(car,background,trafics,stats,start):
     stats.update()
     pygame.display.flip()
     if car.car_explosive :
-        car_dead(trafics, car,start)
+        car_dead(trafics, car,start,end)
         time.sleep(1.5)
         car.car_explosive = False
         car.image = pygame.image.load('Images/Game_Screen/Car/user_green_car_front.png')
@@ -70,8 +74,9 @@ def update_trafic_cars(trafics,car):
         trafic.draw()
 
 
-def car_dead(trafics,car,start):
+def car_dead(trafics,car,start,end):
     start.Game_Start = False
     trafics.empty()
+    end.game_restart = True
     car.rect.centerx = car.screen_rect.centerx
     car.rect.centery = 500

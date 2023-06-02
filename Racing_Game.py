@@ -7,6 +7,7 @@ from background import Background
 from stats import Stats
 from pygame.sprite import Group
 from start_screen import Start_screen
+from end_screen import End_screen
 def run():
     pygame.init()
     screen = pygame.display.set_mode((585, 600))
@@ -16,17 +17,26 @@ def run():
     trafics = Group()
     stats = Stats(screen)
     start_screen = Start_screen(screen)
+    end_screen = End_screen(screen)
     pygame.time.set_timer(pygame.USEREVENT, 3000)
     FPS = 80
     clock = pygame.time.Clock()
     while True:
-        controls.events(car,trafics,screen,start_screen,stats)
-        start_screen.output()
-        pygame.display.flip()
+        controls.events(car,trafics,screen,start_screen,stats,end_screen)
+        if not end_screen.game_restart:
+
+            start_screen.output()
+            pygame.display.flip()
+        else:
+
+            end_screen.output()
+            stats.output_restart()
+            pygame.display.flip()
+
 
         while start_screen.Game_Start:
-            controls.events(car,trafics,screen,start_screen,stats)
-            controls.update(car,background_game_screen,trafics,stats,start_screen)
+            controls.events(car,trafics,screen,start_screen,stats,end_screen)
+            controls.update(car,background_game_screen,trafics,stats,start_screen,end_screen)
             pygame.display.flip()
             clock.tick(FPS)
 
