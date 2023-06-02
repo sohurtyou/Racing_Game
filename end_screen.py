@@ -1,5 +1,6 @@
 import pygame
 
+
 class End_screen:
     def __init__(self, screen):
         self.screen = screen
@@ -8,8 +9,8 @@ class End_screen:
         self.screen_rect = screen.get_rect()
         self.bg_rect.centerx = self.screen_rect.centerx
         self.bg_rect.bottom = self.screen_rect.bottom
-        self.imagend = pygame.image.load('Images/End_Screen/end_screen_restart_button.png')
-        self.rect_end = self.imagend.get_rect()
+        self.image_end_screen = pygame.image.load('Images/End_Screen/end_screen_restart_button.png')
+        self.rect_end = self.image_end_screen.get_rect()
         self.rect_end.centerx = self.screen_rect.centerx
         self.rect_end.centery = 500
         self.font = pygame.font.Font('freesansbold.ttf', 32)
@@ -29,4 +30,4 @@ class End_screen:
         self.screen.blit(self.imagebg, self.bg_rect)
         self.screen.blit(self.text1, self.rect_text1)
         self.screen.blit(self.image_reset_back_ground, self.rect_reset_back_ground)
-        self.screen.blit(self.imagend, self.rect_end)
+        self.screen.blit(self.image_end_screen, self.rect_end)
